@@ -12,6 +12,10 @@ ENV VERSION_SDK_TOOLS "25.2.5"
 ENV VERSION_BUILD_TOOLS "25.0.0"
 ENV VERSION_TARGET_SDK "25"
 
+ENV VERSION_ANDROID_NDK "android-ndk-r15"
+
+ENV ANDROID_NDK_HOME "/sdk/${VERSION_ANDROID_NDK}"
+
 ENV SDK_PACKAGES "build-tools-${VERSION_BUILD_TOOLS},android-${VERSION_TARGET_SDK},addon-google_apis-google-${VERSION_TARGET_SDK},platform-tools,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository"
 
 ENV ANDROID_HOME "/sdk"
@@ -38,6 +42,11 @@ RUN rm -f /etc/ssl/certs/java/cacerts; \
 RUN curl -s http://dl.google.com/android/repository/tools_r${VERSION_SDK_TOOLS}-linux.zip > /tools.zip && \
     unzip /tools.zip -d /sdk && \
     rm -v /tools.zip
+    
+ADD https://dl.google.com/android/repository/${VERSION_ANDROID_NDK}-linux-x86_64.zip /ndk.zip
+
+RUN unzip /ndk.zip -d /sdk && \
+    rm -v /ndk.zip
 
 RUN mkdir -p $ANDROID_HOME/licenses/ \
   && echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > $ANDROID_HOME/licenses/android-sdk-license \
