@@ -7,6 +7,7 @@ A `.gitlab-ci.yml` with caching of your project's dependencies would look like t
 image: dyangalih/gitlab-ci-android:latest
 
 stages:
+- check
 - build
 - deploy
 
@@ -17,6 +18,14 @@ cache:
   key: ${CI_PROJECT_ID}
   paths:
   - .gradle/
+
+#job untuk checking
+check:
+  stage: check
+  only:
+        - develop
+  script:
+      - ./gradlew assembleDebug
 
 #job untuk build
 build:
@@ -35,7 +44,7 @@ deploy:
   only:
       - master
   script:
-    - ./gradlew --stacktrace clean assembleRelease
+    - ./gradlew --stacktrace clean publishApkPlayRelease
   artifacts:
     paths:
     - app/build/outputs/apk
