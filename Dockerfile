@@ -12,9 +12,9 @@ ENV VERSION_SDK_TOOLS "25.2.5"
 ENV VERSION_BUILD_TOOLS "25.0.0"
 ENV VERSION_TARGET_SDK "25"
 
-#ENV VERSION_ANDROID_NDK "android-ndk-r15"
+ENV VERSION_ANDROID_NDK "android-ndk-r15"
 
-#ENV ANDROID_NDK_HOME "/sdk/${VERSION_ANDROID_NDK}"
+ENV ANDROID_NDK_HOME "/sdk/${VERSION_ANDROID_NDK}"
 
 ENV SDK_PACKAGES "build-tools-${VERSION_BUILD_TOOLS},android-${VERSION_TARGET_SDK},addon-google_apis-google-${VERSION_TARGET_SDK},platform-tools,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository"
 
