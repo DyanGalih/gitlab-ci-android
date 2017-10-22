@@ -5,7 +5,7 @@
 # https://git.faked.org/jan/gitlab-ci-android
 #
 
-FROM ubuntu:16.04
+FROM ubuntu:17.04
 MAINTAINER Dyan Galih <dyan.galih@gmail.com>
 
 ENV VERSION_SDK_TOOLS "25.2.5"
