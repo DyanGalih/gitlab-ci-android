@@ -53,8 +53,3 @@ RUN mkdir -p $ANDROID_HOME/licenses/ \
   && echo "84831b9409646a918e30573bab4c9c91346d8abd" > $ANDROID_HOME/licenses/android-sdk-preview-license
 
 RUN (while [ 1 ]; do sleep 5; echo y; done) | ${ANDROID_HOME}/tools/android update sdk -u -a -t ${SDK_PACKAGES}
-
-
-ADD https://dl.google.com/android/repository/${VERSION_ANDROID_NDK}-linux-x86_64.zip /ndk.zip
-RUN unzip /ndk.zip -d /sdk && \
-    rm -v /ndk.zip
